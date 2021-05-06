@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.answer.dao.AnswerClassifyDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.answer.entity.AnswerClassifyEntity" id="answerClassifyMap">
+        <result property="answerClassifyId" column="answer_classify_id"/>
+        <result property="title" column="title"/>
+        <result property="thumb" column="thumb"/>
+        <result property="status" column="status"/>
+        <result property="mergeId" column="merge_id"/>
+        <result property="sortsid" column="sortsid"/>
+        <result property="isMerge" column="is_merge"/>
+        <result property="isSplit" column="is_split"/>
+        <result property="isExchange" column="is_exchange"/>
+        <result property="awardMoney" column="award_money"/>
+        <result property="bonusNum" column="bonus_num"/>
+        <result property="bonusMoney" column="bonus_money"/>
+    </resultMap>
+
+    <select id="getList" resultType="com.freeter.modules.answer.entity.query.AnswerClassifyQuery">
+          SELECT c.answer_classify_id,c.thumb,c.title from cd_answer_classify c where status=1 AND is_exchange=1 ORDER BY sortsid
+    </select>
+</mapper>

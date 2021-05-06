@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.good.dao.SupplierDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.good.entity.SupplierEntity" id="supplierMap">
+        <result property="supplierId" column="supplier_id"/>
+        <result property="name" column="name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="status" column="status"/>
+        <result property="accessToken" column="access_token"/>
+        <result property="expiresAt" column="expires_at"/>
+        <result property="refreshTokenExpiresAt" column="refresh_token_expires_at"/>
+        <result property="refreshToken" column="refresh_token"/>
+        <result property="ownerId" column="owner_id"/>
+        <result property="ownerName" column="owner_name"/>
+        <result property="scope" column="scope"/>
+    </resultMap>
+    <select id="getClassList" resultType="com.freeter.modules.good.entity.vo.SupplierVO">
+        select supplier_id,name,thumb,url from cd_supplier where status=1
+    </select>
+
+    <select id="getComplex" resultType="com.freeter.modules.good.entity.vo.GoodsVO" parameterType="map">
+        SELECT g.goods_id,g.supplier_id,g.title,g.price,g.oprice,g.sales,g.url_short,g.url_long,g.thumb,g.thumb_spread,g.supplier_goods_id,g.bonus,g.omit from cd_goods g
+        left JOIN cd_supplier ON cd_supplier.supplier_id=g.supplier_id
+        left JOIN cd_goods_classify ON cd_goods_classify.goods_classify_id=g.goods_classify_id
+        where  g.supplier_id=#{supplierId} and g.`status`=1 and cd_goods_classify.`status`=1
+        LIMIT #{currentPage},8
+    </select>
+
+    <select id="getPrice" parameterType="map" resultType="com.freeter.modules.good.entity.vo.GoodsVO">
+        SELECT g.goods_id,g.supplier_id,g.title,g.price,g.oprice,g.sales,g.url_short,g.url_long,g.thumb,g.thumb_spread,g.supplier_goods_id,g.bonus,g.omit from cd_goods g
+        left JOIN cd_supplier ON cd_supplier.supplier_id=g.supplier_id
+        left JOIN cd_goods_classify ON cd_goods_classify.goods_classify_id=g.goods_classify_id
+        where g.supplier_id=#{supplierId} AND g.`status`=1 and cd_goods_classify.`status`=1
+        ORDER BY g.price ${sort} LIMIT #{currentPage},8
+    </select>
+
+    <select id="getSales" parameterType="map" resultType="com.freeter.modules.good.entity.vo.GoodsVO">
+        SELECT g.goods_id,g.supplier_id,g.title,g.price,g.oprice,g.sales,g.url_short,g.url_long,g.thumb,g.thumb_spread,g.supplier_goods_id,g.bonus,g.omit from cd_goods g
+        left JOIN cd_supplier ON cd_supplier.supplier_id=g.supplier_id
+        left JOIN cd_goods_classify ON cd_goods_classify.goods_classify_id=g.goods_classify_id
+        where g.supplier_id=#{supplierId} AND g.`status`=1 and cd_goods_classify.`status`=1
+        ORDER BY g.sales ${sort} LIMIT #{currentPage},8
+    </select>
+</mapper>

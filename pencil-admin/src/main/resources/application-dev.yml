@@ -1,0 +1,56 @@
+#热部署生效 
+
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        druid:
+            first:  #数据源1
+                url: jdbc:mysql://116.62.204.50:3306/qianbitou?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+                username: qianbitou
+                password: eFmiiJxNTBEdZ4Xb
+            second:  #数据源2
+                url: jdbc:mysql://116.62.204.50:3306/qianbitou?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+                username: qianbitou
+                password: eFmiiJxNTBEdZ4Xb
+            initial-size: 10
+            max-active: 200
+            min-idle: 10
+            max-wait: 60000
+            pool-prepared-statements: true
+            max-pool-prepared-statement-per-connection-size: 20
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            #validation-query: SELECT 1 FROM DUAL
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+            stat-view-servlet:
+                enabled: true
+                url-pattern: /druid/*
+                #login-username: admin
+                #login-password: admin
+            filter:
+                stat:
+                    log-slow-sql: true
+                    slow-sql-millis: 1000
+                    merge-sql: false
+                wall:
+                    config:
+                        multi-statement-allow: true
+
+    spring:
+        devtools:
+            restart:
+                #热部署生效
+                enabled: true
+                #设置重启的目录
+                additional-paths: src/main/java
+                #classpath目录下的WEB-INF文件夹内容修改不重启
+                exclude: resources/**
+
+logging:
+    level: debug
+    level.com.freeter: debug
+    path: logs/
+    file: admin.log

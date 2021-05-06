@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.good.dao.MemberCollectGoodsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.good.entity.MemberCollectGoodsEntity" id="memberCollectGoodsMap">
+        <result property="id" column="id"/>
+        <result property="memberId" column="member_id"/>
+        <result property="supplierGoodsId" column="supplier_goods_id"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <select id="getList" parameterType="map" resultType="com.freeter.modules.good.entity.vo.GoodsVO">
+        SELECT g.goods_id,g.supplier_id,g.title,g.price,g.oprice,g.sales,g.url_short,g.url_long,g.thumb,g.thumb_spread,g.supplier_goods_id from cd_goods g
+        left JOIN cd_member_collect_goods c ON g.supplier_goods_id=c.supplier_goods_id
+        where c.member_id=#{memberId} and g.status=1
+        ORDER BY c.create_time DESC LIMIT #{currentPage},8
+    </select>
+</mapper>

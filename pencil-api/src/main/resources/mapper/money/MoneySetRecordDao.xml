@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.money.dao.MoneySetRecordDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.money.entity.MoneySetRecordEntity" id="moneySetRecordMap">
+        <result property="moneySetRecordId" column="money_set_record_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="memberId" column="member_id"/>
+        <result property="moneySetId" column="money_set_id"/>
+        <result property="mobile" column="mobile"/>
+        <result property="nickname" column="nickname"/>
+        <result property="title" column="title"/>
+        <result property="addCut" column="add_cut"/>
+        <result property="old" column="old"/>
+        <result property="money" column="money"/>
+        <result property="new" column="new"/>
+        <result property="sourceType" column="source_type"/>
+        <result property="sourceId" column="source_id"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+</mapper>

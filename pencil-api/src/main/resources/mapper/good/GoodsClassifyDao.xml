@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.good.dao.GoodsClassifyDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.good.entity.GoodsClassifyEntity" id="goodsClassifyMap">
+        <result property="goodsClassifyId" column="goods_classify_id"/>
+        <result property="pid" column="pid"/>
+        <result property="title" column="title"/>
+        <result property="thumb" column="thumb"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+</mapper>

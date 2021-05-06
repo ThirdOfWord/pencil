@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.order.dao.ExchangeOrderGoodsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.order.entity.ExchangeOrderGoodsEntity" id="exchangeOrderGoodsMap">
+        <result property="exchangeOrderGoodsId" column="exchange_order_goods_id"/>
+        <result property="exchangeOrderId" column="exchange_order_id"/>
+        <result property="exchangeGoodsId" column="exchange_goods_id"/>
+        <result property="title" column="title"/>
+        <result property="thumb" column="thumb"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="attrTitle" column="attr_title"/>
+        <result property="num" column="num"/>
+    </resultMap>
+
+</mapper>

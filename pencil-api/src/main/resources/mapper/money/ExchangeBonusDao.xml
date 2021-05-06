@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.money.dao.ExchangeBonusDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.money.entity.ExchangeBonusEntity" id="exchangeBonusMap">
+        <result property="exchangeBonusId" column="exchange_bonus_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="exchangeOrderId" column="exchange_order_id"/>
+        <result property="answerClassifyId" column="answer_classify_id"/>
+        <result property="memberId" column="member_id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="mobile" column="mobile"/>
+        <result property="moneyTotal" column="money_total"/>
+        <result property="num" column="num"/>
+        <result property="price" column="price"/>
+        <result property="sales" column="sales"/>
+        <result property="coding" column="coding"/>
+        <result property="status" column="status"/>
+        <result property="shareTitle" column="share_title"/>
+        <result property="shareDes" column="share_des"/>
+        <result property="shareThumb" column="share_thumb"/>
+    </resultMap>
+
+</mapper>

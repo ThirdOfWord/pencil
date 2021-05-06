@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.user.dao.MemberDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.user.entity.MemberEntity" id="memberMap">
+        <result property="memberId" column="member_id"/>
+        <result property="mobile" column="mobile"/>
+        <result property="nickname" column="nickname"/>
+        <result property="six" column="six"/>
+        <result property="inviteCode" column="invite_code"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="wallet" column="wallet"/>
+        <result property="isDel" column="is_del"/>
+        <result property="status" column="status"/>
+    </resultMap>
+</mapper>

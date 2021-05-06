@@ -1,0 +1,36 @@
+远程： 116.62.204.50  3389  administrator  123451980Qbt   
+数据库名：qianbitou 用户：qianbitou 密码：eFmiiJxNTBEdZ4Xb
+
+铅笔头
+1、阿里云：小小铅笔头cw    密码：123451980Qbt(字母区分大小写)   administrator
+2、京东联盟：小小铅笔头ccy  密码：ccx19820828ccy
+3、拼多多：多多进宝user: 13858359669  pwd：ccx19820828ccy      拼多多开放平台(https://open.pinduoduo.com/#/index)  user: 13858359669  pwd: Ccx19820828ccy
+4、企业支付宝/淘宝联盟：账号769053844@qq.com，密码：ccx19820828ccy
+饿了么商家开放平台 账号: 13858359669  密码：ccx19820828ccy
+远程： 116.62.204.50  3389  administrator  123451980Qbt
+
+宝塔  http://116.62.204.50:8890/qianbitou   8888/8890,3389,888/890,80,443,20,21/59212    newuser: qianbitou  newpwd: QianBiTou!@
+
+FTP账号资料 用户：qianbitou 密码:  awH3mHmkNJB87Rxm
+
+数据库账号资料 数据库名：qianbitou 用户：qianbitou 密码：eFmiiJxNTBEdZ4Xb
+radis 密码: awH3mHmkNJB87Rxm
+
+拼多多
+client_id：05f9fbbd87cb4c37947463f75da309bc
+client_secret：7f466088dc0ac82891ba306e317c9826aac5ca38
+
+淘宝客：pid:mm_535270004_1780000352_110507450350
+             appkey:30117515
+             App Secret: 9d3d998debbfc5e9a63fb11b6812cd47
+
+发财鱼（短信）
+hzfacaiyu.com    //wlfacaiyu.com
+用户名：qianbitou
+密码：3uUb0paf
+鉴权key：VAxi9BpHWCvIc730
+
+-----------------------
+云商数据（喵有卷）
+user: 13858359669  
+pwd：ccx19820828ccy

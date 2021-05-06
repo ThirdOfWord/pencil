@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.advert.dao.BroadcastDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.advert.entity.BroadcastEntity" id="broadcastMap">
+        <result property="broadcastId" column="broadcast_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="content" column="content"/>
+        <result property="sortId" column="sort_id"/>
+    </resultMap>
+    <select id="getList" resultType="com.freeter.modules.advert.entity.BroadcastEntity">
+        select create_time,content from cd_broadcast ORDER BY sort_id DESC,broadcast_id DESC LIMIT 0,10;
+    </select>
+</mapper>

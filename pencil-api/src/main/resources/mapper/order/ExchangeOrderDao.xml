@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.order.dao.ExchangeOrderDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.order.entity.ExchangeOrderEntity" id="exchangeOrderMap">
+        <result property="exchangeOrderId" column="exchange_order_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="memberId" column="member_id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="mobile" column="mobile"/>
+        <result property="memberAddressId" column="member_address_id"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="district" column="district"/>
+        <result property="address" column="address"/>
+        <result property="status" column="status"/>
+        <result property="answerClassifyId" column="answer_classify_id"/>
+        <result property="answerClassifyTitle" column="answer_classify_title"/>
+        <result property="isShipping" column="is_shipping"/>
+        <result property="shippingCode" column="shipping_code"/>
+        <result property="shippingName" column="shipping_name"/>
+    </resultMap>
+<select id="getList" resultType="com.freeter.modules.order.entity.vo.Order_GoodsVO" parameterType="map">
+    SELECT cdo.exchange_order_id,cdo.create_time,cdo.status,cdo.is_shipping,cdo.shipping_code,cdo.shipping_name,
+    cdog.exchange_goods_id,cdog.title,cdog.thumb,cdog.num
+    from cd_exchange_order cdo INNER JOIN cd_exchange_order_goods cdog
+    on cdo.exchange_order_id=cdog.exchange_order_id
+    where cdo.member_id=#{memberId} and cdo.status=4 ORDER BY cdo.create_time DESC limit #{currentPage},10
+</select>
+    <select id="getListWei" resultType="com.freeter.modules.order.entity.vo.Order_GoodsVO" parameterType="map">
+    SELECT cdo.exchange_order_id,cdo.create_time,cdo.status,cdo.is_shipping,cdo.shipping_code,cdo.shipping_name,
+    cdog.exchange_goods_id,cdog.title,cdog.thumb,cdog.num
+    from cd_exchange_order cdo INNER JOIN cd_exchange_order_goods cdog
+    on cdo.exchange_order_id=cdog.exchange_order_id
+    where cdo.member_id=#{memberId} and cdo.status IN(2,3) ORDER BY cdo.create_time DESC limit #{currentPage},10
+</select>
+    <select id="getListAll" resultType="com.freeter.modules.order.entity.vo.Order_GoodsVO" parameterType="map">
+    SELECT cdo.exchange_order_id,cdo.create_time,cdo.status,cdo.is_shipping,cdo.shipping_code,cdo.shipping_name,
+    cdog.exchange_goods_id,cdog.title,cdog.thumb,cdog.num
+    from cd_exchange_order cdo INNER JOIN cd_exchange_order_goods cdog
+    on cdo.exchange_order_id=cdog.exchange_order_id
+    where cdo.member_id=#{memberId}  ORDER BY cdo.create_time DESC limit #{currentPage},10
+</select>
+</mapper>

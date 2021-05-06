@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.good.dao.ExchangeAttrValueDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.good.entity.ExchangeAttrValueEntity" id="exchangeAttrValueMap">
+        <result property="exchangeAttrValueId" column="exchange_attr_value_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="exchangeAttrId" column="exchange_attr_id"/>
+        <result property="title" column="title"/>
+        <result property="sortid" column="sortid"/>
+    </resultMap>
+
+    <select id="getListByAttrId" parameterType="int" resultType="com.freeter.modules.good.entity.vo.ExchangeAttrValueVO">
+        SELECT exchange_attr_value_id,exchange_attr_id,title FROM cd_exchange_attr_value
+        WHERE exchange_attr_id=#{attr} ORDER BY sortid
+    </select>
+</mapper>

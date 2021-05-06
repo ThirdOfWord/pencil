@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.answer.dao.AnswerMemberDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.answer.entity.AnswerMemberEntity" id="answerMemberMap">
+        <result property="answerMemberId" column="answer_member_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="memberId" column="member_id"/>
+        <result property="answerClassifyId" column="answer_classify_id"/>
+        <result property="total" column="total"/>
+    </resultMap>
+
+    <select id="getList" resultType="com.freeter.modules.answer.entity.vo.AnswerMemberVO" parameterType="int">
+        SELECT m.answer_member_id,m.answer_classify_id,m.total,c.thumb,c.title,c.merge_id,c.sortsid FROM cd_answer_member m
+        INNER JOIN cd_answer_classify c ON m.answer_classify_id=c.answer_classify_id
+        where m.member_id=#{memberId} and c.`status`=1 ORDER BY c.sortsid
+    </select>
+    <select id="checkUpgrade" resultType="com.freeter.modules.answer.entity.vo.AnswerMemberVO" parameterType="map">
+        SELECT m.answer_member_id,m.answer_classify_id,m.total,c.thumb,c.title FROM cd_answer_member m
+        INNER JOIN cd_answer_classify c ON m.answer_classify_id=c.answer_classify_id
+        WHERE m.member_id=#{memberId} and m.answer_classify_id=#{mergeId}
+    </select>
+    <select id="getDuihuan" resultType="com.freeter.modules.answer.entity.vo.AnswerMemberVO" parameterType="int">
+        SELECT m.answer_member_id,m.answer_classify_id,m.total,c.thumb,c.title FROM cd_answer_member m
+        INNER JOIN cd_answer_classify c ON m.answer_classify_id=c.answer_classify_id
+        WHERE m.member_id=#{memberId} AND c.is_exchange=1 ORDER BY c.sortsid
+    </select>
+</mapper>

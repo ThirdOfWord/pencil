@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.packageCard.dao.PackageCardDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.packageCard.entity.PackageCardEntity" id="packageCardMap">
+        <result property="packageCardId" column="package_card_id"/>
+        <result property="answerClassifyId" column="answer_classify_id"/>
+        <result property="num" column="num"/>
+        <result property="packageId" column="package_id"/>
+    </resultMap>
+    <select id="signInfor" resultType="com.freeter.modules.packageCard.entity.vo.PackageCardVO">
+        SELECT p.answer_classify_id,p.num,c.award_money,c.title,c.thumb
+        from cd_package_card p
+        LEFT JOIN cd_answer_classify c ON p.answer_classify_id=c.answer_classify_id
+        WHERE package_id=2
+    </select>
+<select id="getPackageMoney" resultType="com.freeter.modules.packageCard.entity.vo.PackageCardVO">
+   SELECT p.answer_classify_id,p.num,c.award_money,c.title,c.thumb
+    from cd_package_card p
+    LEFT JOIN cd_answer_classify c ON p.answer_classify_id=c.answer_classify_id
+    WHERE package_id=3
+</select>
+    <select id="getPackageFaKaKuMoney" parameterType="int" resultType="com.freeter.modules.packageCard.entity.vo.PackageCardVO">
+    SELECT p.answer_classify_id,p.num,c.award_money,c.title,c.thumb
+    from cd_package_card p
+    LEFT JOIN cd_answer_classify c ON p.answer_classify_id=c.answer_classify_id
+    WHERE package_id = #{status}
+</select>
+</mapper>

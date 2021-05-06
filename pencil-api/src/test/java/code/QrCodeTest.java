@@ -1,0 +1,24 @@
+package code;
+/**
+ * @Auther: hao
+ * @Date: 2019/12/13 17:58
+ * @Description:
+ */
+public class QrCodeTest {
+    public static void main(String[] args) throws Exception {
+        // 存放在二维码中的内容
+        String text = "2850791469525";
+        // 嵌入二维码的图片路径
+        //String imgPath = "G:/qrCode/dog.jpg";
+        // 生成的二维码的路径及名称
+        String destPath = "file/upload/image/"+text+".jpg";
+        //生成二维码
+        QRCodeUtil.encode(text,"", destPath, true);
+        // 解析二维码
+        String str = QRCodeUtil.decode(destPath);
+        // 打印出解析出的内容
+        System.out.println(str);
+
+    }
+
+}

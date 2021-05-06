@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ac60c3773958d997a64b55feababb4a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>欢迎页</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/statics/css/bootstrap.min.css">
+</head>
+<style>
+    input{border:0  solid;background-color:#F2F2F2;margin-left: 20px}
+    #homePage{margin-top: 20px}
+    html {
+        height: 100%;
+        display: table;
+    }
+
+    body {
+        display: table-cell;
+        height: 100%;
+    }
+</style>
+<body>
+<div class="panel panel-default">
+         <div class="ibox-content">
+            <div class="signin-info" id="homePage">
+                <div style="width: 250px;height: 100px;background-color: #F2F2F2;float: left">
+                    <input type="text" value=""><h4><b style="margin-left:20px">商户总数</b></h4></input>
+                    <span id="userSumNumber" value="" style="margin-left: 25px;color: #009688;font-size: 23px"></span>
+                </div>
+                <div style="width: 250px;height: 100px;background-color: #F2F2F2;float: left;margin-left: 15px">
+                    <input type="text" value=""><h4><b style="margin-left:20px">设备总数/正常总数</b></h4></input>
+                        <span id="facilitySumNumber" value="" style="margin-left: 40px;color: #009688;font-size: 23px"></span>
+                        <span id="facilityOkNumber" value="" style="margin-left: 48px;color: #009688;font-size: 23px"></span>
+                </div>
+                <div style="width: 250px;height: 100px;background-color: #F2F2F2;float: left;margin-left: 15px">
+                    <input type="text" value=""><h4><b style="margin-left:20px">设备正在运作数</b></h4></input>
+                    <span id="facilityOpenNumber" value="" style="margin-left: 25px;color: #009688;font-size: 23px"></span>
+                </div>
+                <div style="width: 250px;height: 100px;background-color: #F2F2F2;float: left;margin-left: 15px">
+                    <input type="text" value=""><h4><b style="margin-left:20px">订单争议总数/当前争议数</b></h4></input>
+                    <span id="disputeSumNumber" value="" style="margin-left: 40px;color: #009688;font-size: 23px"></span>
+                    <span id="disputeOpenNumber" value="" style="margin-left: 66px;color: #009688;font-size: 23px"></span>
+                </div>
+            </div>
+         </div>
+         <div>
+             <div style="width: 1200px;height: 120px">
+                 <div style="width: 250px;height: 100px; margin-top: 20px; background-color: #F2F2F2;float: left">
+                     <input type="text" value=""><h4><b style="margin-left:20px">订单总数</b></h4></input>
+                     <span id="orderSumNumber" value="" style="color: #009688;margin-left: 25px;font-size: 23px"></span>
+                 </div>
+                 <div style="width: 250px;height: 100px;margin-top: 20px; background-color: #F2F2F2;float: left;margin-left: 15px">
+                     <input type="text" value=""><h4><b style="margin-left:20px">进行中订单数</b></h4></input>
+                     <span id="orderOpenNumber" value="" style="color: #009688;margin-left: 25px;font-size: 23px"></span>
+                 </div>
+                 <div style="width: 250px;height: 100px;margin-top: 20px; background-color: #F2F2F2;float: left;margin-left: 15px">
+                     <input type="text" value=""><h4><b style="margin-left:20px">总充值次数</b></h4></input>
+                     <span id="paySumNumber" value="" style="color: #009688;margin-left: 25px;font-size: 23px"></span>
+                 </div>
+                 <div style="width: 250px;height: 100px;margin-top: 20px; background-color: #F2F2F2;float: left;margin-left: 15px">
+                     <input type="text" value=""><h4><b style="margin-left:20px">可用次数</b></h4></input>
+                     <span id="payAvailableNumber" value="" style="color: #009688;margin-left: 25px;font-size: 23px"></span>
+                 </div>
+             </div>
+        </div>
+    </div>
+</body>
+</html>

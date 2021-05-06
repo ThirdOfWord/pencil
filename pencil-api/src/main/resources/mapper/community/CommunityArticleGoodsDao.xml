@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.community.dao.CommunityArticleGoodsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.community.entity.CommunityArticleGoodsEntity" id="communityArticleGoodsMap">
+        <result property="communityArticleGoodsId" column="community_article_goods_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="communityArticleId" column="community_article_id"/>
+        <result property="title" column="title"/>
+        <result property="thumb" column="thumb"/>
+        <result property="shares" column="shares"/>
+        <result property="url" column="url"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="token" column="token"/>
+    </resultMap>
+    <select id="getByCommunityArticleIdList" resultType="com.freeter.modules.community.entity.vo.CommunityArticleGoodsVO" parameterType="int">
+        select g.community_article_goods_id,g.thumb,g.poster from cd_community_article_goods g where community_article_id=#{communityArticleId}
+    </select>
+</mapper>

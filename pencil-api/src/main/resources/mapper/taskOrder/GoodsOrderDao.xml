@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.freeter.modules.taskOrder.dao.GoodsOrderDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.freeter.modules.taskOrder.entity.vo.GoodsOrderVO" id="goodsOrderMap">
+        <result property="goodsOrderId" column="goods_order_id"/>
+        <result property="supplierId" column="supplier_id"/>
+        <result property="ordertime" column="ordertime"/>
+        <result property="orderid" column="orderid"/>
+        <result property="skuid" column="skuid"/>
+        <result property="skuname" column="skuname"/>
+        <result property="skunum" column="skunum"/>
+        <result property="thumbnailUrl" column="thumbnail_url"/>
+        <result property="price" column="price"/>
+        <result property="paymoney" column="paymoney"/>
+        <result property="orderStatus" column="order_status"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="receiveTime" column="receive_time"/>
+        <result property="feeMember" column="fee_member"/>
+        <result property="isRrive" column="is_rrive"/>
+    </resultMap>
+
+    <select id="getlist" parameterType="map" resultType="com.freeter.modules.taskOrder.entity.vo.GoodsOrderVO">
+        SELECT goods_order_id,supplier_id,ordertime,orderid,skuid,skuname,skunum,thumbnail_url,price,order_status,pay_time,paymoney,receive_time,fee_member,is_rrive
+        from cd_goods_order
+        WHERE member_id=#{memberId} and supplier_id=#{supplierId} ORDER BY ordertime DESC limit #{currentPage},8
+    </select>
+
+    <!--<select id="getAllList" parameterType="map" resultType="com.freeter.modules.taskOrder.entity.vo.GoodsOrderVO">
+        SELECT goods_order_id,supplier_id,ordertime,orderid,skuid,skuname,skunum,thumbnail_url,price,order_status,pay_time,paymoney,receive_time,fee_member,is_rrive
+        from cd_goods_order
+        WHERE member_id=#{memberId}  ORDER BY ordertime DESC limit #{currentPage},8
+    </select>-->
+    <select id="getAllListByStatus" parameterType="map" resultType="com.freeter.modules.taskOrder.entity.vo.GoodsOrderVO">
+        SELECT goods_order_id,supplier_id,ordertime,orderid,skuid,skuname,skunum,thumbnail_url,price,order_status,pay_time,paymoney,receive_time,fee_member,is_rrive
+        from cd_goods_order
+        WHERE member_id=#{memberId} and is_rrive=#{orderStatus} ORDER BY ordertime DESC limit #{currentPage},8
+    </select>
+    <!-- 全部订单和兑换订单-->
+    <select id="getAll" parameterType="map" resultMap="goodsOrderMap">
+        SELECT * from  (
+            SELECT goods_order_id,orderid,ordertime,order_status,skuname,thumbnail_url,skunum,skuid,supplier_id,price,pay_time,paymoney,receive_time,fee_member,is_rrive
+            from cd_goods_order
+            WHERE member_id = #{memberId}
+            UNION
+            SELECT eorder.exchange_order_id as goods_order_id,eorder.exchange_order_id as orderid,eorder.create_time as ordertime,eorder.status as order_status,ordergood.title as skuname,ordergood.thumb as thumbnailUrl,
+                   ordergood.num as skunum,ordergood.exchange_goods_id as skuid,eorder.supplier_id as supplier_id,
+                   eorder.is_shipping as price,eorder.create_time as pay_time,eorder.is_shipping as paymoney,eorder.create_time as receive_time,
+                   eorder.is_shipping as fee_member,eorder.is_shipping as is_rrive
+            from cd_exchange_order eorder
+            LEFT JOIN cd_exchange_order_goods ordergood on eorder.exchange_order_id = ordergood.exchange_order_id
+            WHERE member_id = #{memberId}
+        ) as goodOrderList order by goodOrderList.ordertime DESC limit #{currentPage},8
+    </select>
+</mapper>
