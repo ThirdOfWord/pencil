@@ -87,14 +87,6 @@
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-simple</artifactId>
 				</exclusion>
-				<exclusion>
-					<groupId>com.alibaba</groupId>
-					<artifactId>fastjson</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>de.ruedigermoeller</groupId>
-					<artifactId>fst</artifactId>
-				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
