@@ -3,7 +3,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<groupId>com.freeter</groupId>
-		<artifactId>car</artifactId>
+		<artifactId>pencil</artifactId>
 		<version>3.2.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -20,7 +20,6 @@
 		<qcloud.cos.version>4.4</qcloud.cos.version>
 		<swagger.version>2.7.0</swagger.version>
 		<velocity.version>1.7</velocity.version>
-
 	</properties>
 
 	<dependencies>

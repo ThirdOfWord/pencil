@@ -6,14 +6,15 @@
 		<artifactId>pencil</artifactId>
 		<version>3.2.0</version>
 	</parent>
+
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>pencil-api</artifactId>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<description>pencil-api</description>
 
 	<properties>
-
 		<quartz.version>2.3.0</quartz.version>
 		<shiro.version>1.3.2</shiro.version>
 		<kaptcha.version>0.0.9</kaptcha.version>
@@ -29,6 +30,7 @@
 			<artifactId>pencil-common</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
@@ -56,6 +58,12 @@
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
 			<version>${shiro.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-beanutils</groupId>
+					<artifactId>commons-beanutils</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
@@ -86,6 +94,16 @@
 			<groupId>com.aliyun.oss</groupId>
 			<artifactId>aliyun-sdk-oss</artifactId>
 			<version>${aliyun.oss.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-beanutils</groupId>
+					<artifactId>commons-beanutils</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.qcloud</groupId>
@@ -221,6 +239,12 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>${commons.fileupload.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.commons</groupId>
+					<artifactId>commons-io</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- 阿里云短信-->
 		<dependency>
@@ -329,6 +353,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<groupId>com.freeter</groupId>
-	<version>1.0</version>
 </project>
